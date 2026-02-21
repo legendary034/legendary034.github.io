@@ -1,10 +1,11 @@
 :root {
-    --bg-color: #0d0d0d;
-    --text-color: #e0e0e0;
-    --primary-color: #6366f1;
-    --accent-color: #4f46e5;
-    --card-bg: #1a1a1a;
-    --border-color: #2a2a2a;
+    --bg-color: #050505;
+    --text-color: #f0f0f0;
+    --text-muted: #a0a0a0;
+    --primary-color: #818cf8;
+    --accent-color: #6366f1;
+    --card-bg: #111111;
+    --border-color: #262626;
     --font-main: 'Outfit', sans-serif;
 }
 
@@ -13,6 +14,11 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 body {
@@ -61,14 +67,13 @@ nav .container {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--text-muted);
     font-size: 0.9rem;
-    opacity: 0.6;
-    transition: opacity 0.3s;
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    opacity: 1;
+    color: var(--text-color);
 }
 
 /* Hero */
@@ -87,7 +92,7 @@ nav .container {
 .hero p {
     font-size: 1.1rem;
     max-width: 600px;
-    opacity: 0.6;
+    color: var(--text-muted);
 }
 
 /* Showcase Grid */
@@ -115,9 +120,8 @@ nav .container {
     border: 1px solid var(--border-color);
     padding: 2rem;
     border-radius: 12px;
-    transition: transform 0.2s, border-color 0.2s;
-    text-decoration: none;
-    color: inherit;
+    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
 }
@@ -135,7 +139,7 @@ nav .container {
 
 .project-card p {
     font-size: 0.95rem;
-    opacity: 0.6;
+    color: var(--text-muted);
     margin-bottom: 1.5rem;
     flex-grow: 1;
 }
