@@ -34,38 +34,57 @@
     <main id="showcase" class="showcase">
         <div class="container">
             <span class="section-title">Latest Programs</span>
+
+            <div class="filter-nav">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="productivity">Productivity</button>
+                <button class="filter-btn" data-filter="minigames">Mini Games</button>
+                <button class="filter-btn" data-filter="personal">Personal</button>
+            </div>
+
             <div class="project-grid">
                 <!-- Project 1 -->
-                <a href="#" class="project-card">
+                <a href="#" class="project-card" data-category="productivity">
                     <h3>EzOps Workspace</h3>
                     <p>A comprehensive operations management tool with encrypted vaults, command tracking, and automated
                         workplan generation.</p>
                     <div class="project-meta">
-                        <span>Electron</span>
+                        <span>Productivity</span>
                         <span>&bull;</span>
-                        <span>Vibe Coded</span>
+                        <span>Electron</span>
                     </div>
                 </a>
 
                 <!-- Project 2 -->
-                <a href="#" class="project-card">
+                <a href="#" class="project-card" data-category="personal">
                     <h3>Pickleball Event Finder</h3>
                     <p>Automated script for searching and logging regional sports events with recency verification.</p>
                     <div class="project-meta">
-                        <span>Automation</span>
+                        <span>Personal</span>
                         <span>&bull;</span>
-                        <span>Workflows</span>
+                        <span>Automation</span>
                     </div>
                 </a>
 
                 <!-- Project 3 -->
-                <a href="#" class="project-card">
+                <a href="#" class="project-card" data-category="productivity">
                     <h3>VibeOps Hub</h3>
                     <p>The centralized control center for digital operations and high-frequency productivity.</p>
                     <div class="project-meta">
-                        <span>Web App</span>
+                        <span>Productivity</span>
                         <span>&bull;</span>
-                        <span>Visual Design</span>
+                        <span>Web App</span>
+                    </div>
+                </a>
+
+                <!-- Mini Games Placeholder -->
+                <a href="#" class="project-card" data-category="minigames">
+                    <h3>VibeQuest</h3>
+                    <p>A high-energy terminal-based RPG built to test operational speed and decision making.</p>
+                    <div class="project-meta">
+                        <span>Mini Games</span>
+                        <span>&bull;</span>
+                        <span>Terminal</span>
                     </div>
                 </a>
 
@@ -83,6 +102,31 @@
             <p>&copy; 2026 VibeOps. Built with precision and vibe.</p>
         </div>
     </footer>
+    <script>
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter projects
+                document.querySelectorAll('.project-card').forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'flex';
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 10);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
