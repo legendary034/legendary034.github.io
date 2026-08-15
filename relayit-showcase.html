@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RelayIT - Tech Support Ticketing System Showcase</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --surface-color: rgba(31, 33, 42, 0.4);
+            --surface-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent-primary: #6366f1;
+            --accent-secondary: #10b981;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --glass-blur: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            width: 80vw;
+            height: 80vh;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(120px);
+            opacity: 0.5;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        body::before {
+            background: radial-gradient(circle, var(--accent-primary) 0%, transparent 60%);
+            top: -20%;
+            left: -10%;
+        }
+
+        body::after {
+            background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 60%);
+            bottom: -20%;
+            right: -10%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(10%, 15%) scale(1.1); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.03em;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 6rem;
+            padding-top: 4rem;
+            animation: fadeUp 1s ease-out;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #a5b4fc;
+            padding: 0.5rem 1.2rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tech-badge {
+            background: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        .visual-showcase {
+            margin-bottom: 6rem;
+        }
+
+        .glass-panel {
+            background: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            border-radius: 20px;
+            backdrop-filter: blur(var(--glass-blur));
+            padding: 2rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .glass-panel img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .feature h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+
+        .feature p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .terminal {
+            background: #090a0f;
+            border: 1px solid var(--surface-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #a7f3d0;
+            overflow-x: auto;
+            margin-bottom: 6rem;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .red { background: #ef4444; }
+        .yellow { background: #f59e0b; }
+        .green { background: #10b981; }
+
+        .keyword { color: #f472b6; }
+        .string { color: #fde047; }
+        .comment { color: #64748b; }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-nav:hover {
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--surface-border);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <nav style="padding: 1.5rem 0;">
+            <a href="index.html" class="back-nav">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Back to Showcase
+            </a>
+        </nav>
+        
+        <!-- Hero Section -->
+        <header class="hero">
+            <span class="badge">Self-Hosted Web System</span>
+            <h1>RelayIT Ticket System</h1>
+            <p>Lightweight, HIPAA-conscious tech support ticketing platform built for speed, real-time collaboration, and anti-cache immediate web response.</p>
+            <div class="tech-stack">
+                <span class="tech-badge">Python / FastAPI</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">Jinja2</span>
+                <span class="tech-badge">Caddy</span>
+                <span class="tech-badge">Docker</span>
+            </div>
+        </header>
+
+        <!-- Visual Showcase -->
+        <div class="visual-showcase">
+            <div class="glass-panel">
+                <img src="assets/relayit/relayit_showcase.png" alt="RelayIT Tech Support Dashboard Interface">
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <div class="feature glass-panel">
+                <div class="feature-icon">🛡️</div>
+                <h3>RBAC Access Control</h3>
+                <p>Role-based management supporting Admin, Technician, and Staff privileges with filtered views and restricted diagnostic work notes.</p>
+            </div>
+
+            <div class="feature glass-panel">
+                <div class="feature-icon">⚡</div>
+                <h3>Anti-Cache Gateway</h3>
+                <p>Integrated Caddy proxy and FastAPI response headers ensuring instant browser updates with <code>Cache-Control: no-cache</code> policy.</p>
+            </div>
+
+            <div class="feature glass-panel">
+                <div class="feature-icon">🔍</div>
+                <h3>Natural Issue Search</h3>
+                <p>Case-insensitive search across titles, descriptions, and specialized asset reference IDs (e.g. <code>#SQL-102</code>) for instant historical lookup.</p>
+            </div>
+
+            <div class="feature glass-panel">
+                <div class="feature-icon">⚠️</div>
+                <h3>PHI & HIPAA Guardrails</h3>
+                <p>Prominent, non-intrusive banner warnings on every ticket detail view instructing users to prevent accidental entry of clinical/patient data.</p>
+            </div>
+        </div>
+
+        <!-- Code Snippet -->
+        <div class="terminal glass-panel">
+            <div class="terminal-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <code>
+                <span class="comment"># relayit-compose.yml container configuration</span><br>
+                <span class="keyword">services:</span><br>
+                &nbsp;&nbsp;<span class="keyword">relayit-web:</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">build:</span> <span class="string">.</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">environment:</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">-</span> <span class="string">DATABASE_URL=postgresql://relay:pass@relayit-db:5432/relayit</span><br>
+                &nbsp;&nbsp;<span class="keyword">relayit-caddy:</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">image:</span> <span class="string">caddy:2-alpine</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">ports:</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">-</span> <span class="string">"80:8000"</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">restart:</span> <span class="string">unless-stopped</span>
+            </code>
+        </div>
+
+        <!-- Technical Features -->
+        <section class="feature-section">
+            <h2>Technical Specifications</h2>
+            <div class="feature-table-container">
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Implementation</th>
+                            <th>Benefit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Backend Core</td>
+                            <td>FastAPI + SQLAlchemy</td>
+                            <td>High-speed async ticket routing</td>
+                        </tr>
+                        <tr>
+                            <td>Database Persistence</td>
+                            <td>PostgreSQL 16 Container</td>
+                            <td>ACID transactional integrity</td>
+                        </tr>
+                        <tr>
+                            <td>Reverse Proxy</td>
+                            <td>Caddy v2 Alpine</td>
+                            <td>Instant header stripping & anti-caching</td>
+                        </tr>
+                        <tr>
+                            <td>User Management</td>
+                            <td>Password hashing & session auth</td>
+                            <td>Secure staff role isolation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 VibeOps Portfolio &bull; Built with precision and vibe.</p>
+    </footer>
+
+</body>
+</html>

@@ -27,8 +27,16 @@ The public-facing portfolio and product showcase site for all projects. Hosted o
 | `flighttracker-showcase.html` | FlightTracker product page |
 | `gitsnap-showcase.html` | Gitsnap product page |
 | `homeasset-showcase.html` | HomeAsset product page |
+| `iowake-showcase.html` | IOWake Discipline Alarm product page |
+| `jobboard-showcase.html` | JobBoard Tracker product page |
+| `odysseus-showcase.html` | Odysseus AI Workspace product page |
 | `piccompare-showcase.html` | PicCompare (Duplicate Image Detective) product page |
+| `relayit-showcase.html` | RelayIT Tech Support Ticketing product page |
+| `screensaver-showcase.html` | Matrix ScreenSaver product page |
 | `spriteslicer-showcase.html` | SpriteSlicer product page |
+| `storyreader-showcase.html` | StoryReader AI product page |
+| `terminalbuddy-showcase.html` | TerminalBuddy product page |
+| `vidsimp-showcase.html` | VidSimp product page |
 | `CNAME` | Custom domain config for GitHub Pages |
 
 ---
